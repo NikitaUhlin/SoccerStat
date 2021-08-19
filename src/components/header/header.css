@@ -1,0 +1,33 @@
+.header__content {
+    display: flex;
+    background:url(../../assets/img/header-bg.jpg);
+    background-size: cover;
+    background-position: 0 70%;
+    padding: 20px;
+    color: rgb(255, 255, 255);
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: space-around;
+}
+.header-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.header-links {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.header-link {
+    padding: 0 20px;
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+.header-logo {
+    width: 50px;
+}
