@@ -23,9 +23,11 @@ const CompetitionItem = ({ competitionItem }) => {
     return (
         <tr className="content">
             <td className="content-td competition_name">{name}</td>
-            <td className="content-td competition_area">
-                <img className="area-icon" src={ensignUrl} alt="N/A" />
-                <div className="area-name">{areaName}</div>
+            <td className="content-td">
+                <div className="competition_area">
+                    <img className="area-icon" src={ensignUrl} alt="N/A" />
+                    <div className="area-name">{areaName}</div>
+                </div>
             </td>
             <td className="content-td">{formattedPlan}</td>
         </tr>

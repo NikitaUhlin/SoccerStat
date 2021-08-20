@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../header/header';
 import './app.css';
 import CompetitionsList from '../competitionsList/competitionsList';
+import TeamsList from '../teamsList/teamsList';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,12 +14,16 @@ function App() {
     <>
       <Router>
         <Header />
-        <Switch>
-          <Route path='/' />
-          <Route path='/competitions'>
-            <CompetitionsList />
-          </Route>
-        </Switch>
+        <div className="app_content">
+          <Switch>
+            <Route path='/competitions'>
+              <CompetitionsList />
+            </Route>
+            <Route path='/teams'>
+              <TeamsList />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     </>
   )

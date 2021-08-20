@@ -1,0 +1,49 @@
+.crest-icon {
+    height: 70px;
+    width: 70px;
+    margin-right: 20px;
+}
+.team-card {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 6px;
+    align-items: center;
+    transition: 0.3s;
+}
+.team-content{
+    display: flex;
+}
+.team-card:hover {
+    background-color: #c8e6c9;
+}
+.team_name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #1b5e20;
+}
+.team_item {
+    margin-bottom: 3px;
+}
+.team_item span {
+    font-weight: 500;
+}
+@media (max-width: 600px){
+        .crest-icon {
+            width: 45px;
+            height: 45px;
+            margin-right: 10px;
+        }
+        .team_name {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+        .team_item {
+            font-size: 12px;
+        }
+        .team-card {
+            margin-bottom: 15px;
+            
+        }
+}
+    

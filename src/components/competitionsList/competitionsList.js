@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { competitionLoaded, competitionRequested } from '../../store/actions';
 import API from '../../services/apiService';
-import CompetitionItem from '../competitonItems/competitionItem'
+import CompetitionItem from '../competitionItems/competitionItem'
 import './competitionsList.css'
 
 

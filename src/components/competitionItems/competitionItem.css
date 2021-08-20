@@ -23,10 +23,10 @@
 .competition_area {
     display: flex;
     justify-content: flex-start;
-    /* width: 20%; */
+    align-items: center;
 }
 .content-td {
-    padding: 20px 50px;
+    padding: 20px;
 }
 .content-td:first-child {
     border-radius: 6px 0 0 6px;
@@ -34,6 +34,20 @@
 .content-td:last-child {
     border-radius: 0 6px 6px 0;
 }
+
+@media (max-width: 600px){
+        .content {
+           font-size: 10px; 
+        }
+        .area-icon {
+            width: 15px;
+            height: 10px;
+        }
+        .content-td {
+             padding: 10px;
+}
+    }
+
 
 
     
