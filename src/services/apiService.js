@@ -14,7 +14,12 @@ class ApiService {
     getCompetitions() {
         return this.api.get('competitions?areas=2077')
     }
+
+    getTeams() {
+        return this.api.get('teams?areas=2077')
+    }
 }
+
 
 
 const API = new ApiService()

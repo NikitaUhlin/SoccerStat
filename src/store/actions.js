@@ -9,4 +9,15 @@ const competitionRequested = () => {
         type: 'COMPETITION_REQUESTED',
     }
 }
-export { competitionLoaded, competitionRequested };
+const teamLoaded = (newTeam) => {
+    return {
+        type: 'TEAM_LOADED',
+        payload: newTeam
+    }
+}
+const teamRequested = () => {
+    return {
+        type: 'TEAM_REQUESTED',
+    }
+}
+export { competitionLoaded, competitionRequested, teamLoaded, teamRequested };

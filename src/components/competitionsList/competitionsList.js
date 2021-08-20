@@ -1,20 +1,27 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { competitionLoaded, competitionRequested } from '../../store/actions'
-import API from '../../services/apiService'
+import { competitionLoaded, competitionRequested } from '../../store/actions';
+import API from '../../services/apiService';
+import CompetitionItem from '../competitonItems/competitionItem'
+import './competitionsList.css'
 
 
 
-const CompetitionsList = (props) => {
+const CompetitionsList = ({ competitionRequested, competitionLoaded, competitions }) => {
     useEffect(() => {
-        props.competitionRequested();
+        competitionRequested();
         API.getCompetitions()
-            .then(res => props.competitionLoaded(res.data));
+            .then(res => competitionLoaded(res.data));
     }, [])
-    console.log(props)
     return (
-        <div>
-            {props.competitions.length}
+        <div className="content_competitions-list">
+            <table className="competitions-list">
+                {competitions.map(competitionItem => {
+                    return <CompetitionItem key={competitionItem.id}
+
+                        competitionItem={competitionItem} />
+                })}
+            </table>
         </div>
     )
 };

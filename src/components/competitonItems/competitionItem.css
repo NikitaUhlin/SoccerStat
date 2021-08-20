@@ -1,0 +1,39 @@
+.area-icon {
+    height: 20px;
+    width: 30px;
+    padding-right: 10px;
+}
+.content {
+    color: rgb(0, 0, 0);
+    
+    font-size: 16px;
+    font-weight: bold;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e8f5e9;
+    transition: 0.3s linear;
+}
+.content:nth-child(even) {
+    background-color: #c8e6c9;
+}
+.content:hover{
+    background-color: #a5d6a7;
+
+}
+.competition_area {
+    display: flex;
+    justify-content: flex-start;
+    /* width: 20%; */
+}
+.content-td {
+    padding: 20px 50px;
+}
+.content-td:first-child {
+    border-radius: 6px 0 0 6px;
+}
+.content-td:last-child {
+    border-radius: 0 6px 6px 0;
+}
+
+
+    

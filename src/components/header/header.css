@@ -27,6 +27,11 @@
     display: flex;
     text-decoration: none;
     color: white;
+    transition: 0.3s linear;
+    
+}
+.header-link:hover {
+    color: #81d4fa;
 }
 .header-logo {
     width: 50px;

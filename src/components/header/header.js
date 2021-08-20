@@ -1,17 +1,20 @@
 import React from 'react';
 import logo from '../../assets/img/logo.png';
 import './header.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <div className="header__content">
             <div className="header-title">
-                <img className="header-logo" src={logo} alt="logo" />
-                <div>Статистика евролиги</div>
+                <Link to="/" className="header-link header-title">
+                    <img className="header-logo" src={logo} alt="logo" />
+                    <div>Статистика евролиги</div>
+                </Link>
             </div>
             <div className="header-links">
-                <a className="header-link" href="#">Лиги</a>
-                <a className="header-link" href="#">Команды</a>
+                <Link className="header-link" to="/competitions">все Лиги</Link>
+                <a className="header-link" href="#">все Команды</a>
             </div>
         </div>
     )
