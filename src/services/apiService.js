@@ -4,11 +4,8 @@ class ApiService {
     constructor() {
         this.api = axios.create({
             baseURL: 'https://api.football-data.org/v2/',
-            headers: { 'X-Auth-Token': '8c7238921ae4420db5002ac6a4bbca4f' }
+            headers: { 'X-Auth-Token': process.env.REACT_APP_API_KEY }
         });
-        // this._apiBase = 'https://api.football-data.org/v2/'
-        // this._apiCompetitionsBase = 'https://api.football-data.org/v2/competitions?areas=2077';
-        // this._apiTeamsBase = 'https://api.football-data.org/v2/teams/'
     }
 
     getCompetitions() {
@@ -18,9 +15,10 @@ class ApiService {
     getTeams() {
         return this.api.get('teams?areas=2077')
     }
+    getTeamMatches(id) {
+        return this.api.get(`teams/${id}/matches/`)
+    }
 }
-
-
 
 const API = new ApiService()
 
