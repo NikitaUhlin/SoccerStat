@@ -1,0 +1,8 @@
+.calendarList {
+    margin: 20px auto;
+    width: 100%;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-gap: 5px;
+}

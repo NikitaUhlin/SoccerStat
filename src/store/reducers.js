@@ -3,6 +3,7 @@ const initialState = {
     competitionsCount: 0,
     teams: [],
     teamsCount: 0,
+    matches: [],
     loading: true
 }
 
@@ -32,7 +33,17 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: true
             };
-
+        case 'TEAM_MATCHES_LOADED':
+            return {
+                ...state,
+                matches: action.payload.matches,
+                loading: false
+            };
+        case 'TEAM_MATCHES_REQUESTED':
+            return {
+                ...state,
+                loading: true
+            };
         default:
             return state;
     }

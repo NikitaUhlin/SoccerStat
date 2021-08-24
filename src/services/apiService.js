@@ -16,7 +16,10 @@ class ApiService {
         return this.api.get('teams?areas=2077')
     }
     getTeamMatches(id) {
-        return this.api.get(`teams/${id}/matches/`)
+        return this.api.get(`teams/${id}/matches`)
+    }
+    getCompetitionMatches(id) {
+        return this.api.get(`competitions/${id}/matches`)
     }
 }
 

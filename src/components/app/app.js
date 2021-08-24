@@ -8,6 +8,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import TeamCalendar from '../teamCalendar/teamCalendar';
 
 function App() {
   return (
@@ -19,8 +20,13 @@ function App() {
             <Route path='/competitions'>
               <CompetitionsList />
             </Route>
-            <Route path='/teams'>
+            <Route
+              path='/teams'
+              exact>
               <TeamsList />
+            </Route>
+            <Route path='/teams/:id'>
+              <TeamCalendar />
             </Route>
           </Switch>
         </div>

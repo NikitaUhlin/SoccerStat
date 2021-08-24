@@ -7,8 +7,6 @@ import './teamsList.css'
 import SearchPanel from '../searchPanel/searchPanel';
 import Spinner from '../spinner/spinner';
 
-
-
 const TeamsList = ({ teamRequested, teamLoaded, teams, loading }) => {
     const [filteredTeams, setFilteredTeams] = useState(teams);
     const [emptySearch, setEmptySearch] = useState(false);
@@ -48,11 +46,8 @@ const TeamsList = ({ teamRequested, teamLoaded, teams, loading }) => {
             {loading ? <Spinner /> :
                 <div className="teams-list">
                     {emptySearch ? <tr><td>Ничего не найдено...</td></tr> :
-                        filteredTeams.map(teamItem => {
-                            return <TeamItem key={teamItem.id}
-
-                                teamItem={teamItem} />
-                        })}
+                        filteredTeams.map(teamItem => (<TeamItem key={teamItem.id} teamItem={teamItem} />
+                        ))}
                 </div>
             }
         </div>

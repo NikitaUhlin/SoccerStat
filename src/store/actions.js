@@ -20,4 +20,15 @@ const teamRequested = () => {
         type: 'TEAM_REQUESTED',
     }
 }
-export { competitionLoaded, competitionRequested, teamLoaded, teamRequested };
+const teamMatchesLoaded = (newTeamMatches) => {
+    return {
+        type: 'TEAM_MATCHES_LOADED',
+        payload: newTeamMatches
+    }
+}
+const teamMatchesRequested = () => {
+    return {
+        type: 'TEAM_MATCHES_REQUESTED',
+    }
+}
+export { competitionLoaded, competitionRequested, teamLoaded, teamRequested, teamMatchesLoaded, teamMatchesRequested };
