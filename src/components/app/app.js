@@ -9,6 +9,7 @@ import {
   Route
 } from "react-router-dom";
 import TeamCalendar from '../teamCalendar/teamCalendar';
+import CompetitionCalendar from '../competitionCalendar/competitionCalendar';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Header />
         <div className="app_content">
           <Switch>
-            <Route path='/competitions'>
+            <Route path='/competitions'
+              exact>
               <CompetitionsList />
             </Route>
             <Route
@@ -25,8 +27,13 @@ function App() {
               exact>
               <TeamsList />
             </Route>
-            <Route path='/teams/:id'>
+            <Route path='/teams/:id'
+            >
               <TeamCalendar />
+            </Route>
+            <Route path='/competitions/:id'
+            >
+              <CompetitionCalendar />
             </Route>
           </Switch>
         </div>

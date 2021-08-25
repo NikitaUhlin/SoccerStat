@@ -1,4 +1,6 @@
 .crest-icon {
+    flex-grow: 0;
+    flex-shrink: 0;
     height: 70px;
     width: 70px;
     margin-right: 20px;

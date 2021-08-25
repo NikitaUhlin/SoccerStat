@@ -31,4 +31,42 @@ const teamMatchesRequested = () => {
         type: 'TEAM_MATCHES_REQUESTED',
     }
 }
-export { competitionLoaded, competitionRequested, teamLoaded, teamRequested, teamMatchesLoaded, teamMatchesRequested };
+const competitionMatchesLoaded = (newCompetitionMatches) => {
+    return {
+        type: 'COMPETITION_MATCHES_LOADED',
+        payload: newCompetitionMatches
+    }
+}
+const competitionMatchesRequested = () => {
+    return {
+        type: 'COMPETITION_MATCHES_REQUESTED',
+    }
+}
+const teamMatchesError403 = () => {
+    return {
+        type: 'TEAM_MATCHES_ERROR_403'
+    }
+}
+const competitionMatchesError403 = () => {
+    return {
+        type: 'COMPETITION_MATCHES_ERROR_403'
+    }
+}
+const clearMatches = () => {
+    return {
+        type: 'MATCHES_CLEAR'
+    }
+}
+export {
+    competitionLoaded,
+    competitionRequested,
+    teamLoaded,
+    teamRequested,
+    teamMatchesLoaded,
+    teamMatchesRequested,
+    competitionMatchesLoaded,
+    competitionMatchesRequested,
+    competitionMatchesError403,
+    teamMatchesError403,
+    clearMatches
+};

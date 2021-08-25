@@ -1,11 +1,11 @@
 import React from 'react';
-import './teamCalendarItem.css'
+import './calendarItem.css'
 import arrowBack from '../../assets/icons/arrow-back.svg'
 import { format } from 'date-fns';
 
-const TeamCalendarItem = ({ teamCalendarItem }) => {
+const CalendarItem = ({ calendarItem, competition }) => {
+    const competitionName = competition ? '' : calendarItem.competition.name
     const {
-        competition: { name: competitionName },
         status,
         homeTeam: { name: homeTeam },
         awayTeam: { name: awayTeam },
@@ -15,7 +15,7 @@ const TeamCalendarItem = ({ teamCalendarItem }) => {
                 homeTeam: homeTeamScore,
                 awayTeam: awayTeamScore } },
         utcDate
-    } = teamCalendarItem;
+    } = calendarItem;
     const date = status === 'FINISHED' ?
         format(new Date(utcDate), 'dd.MM.yyyy')
         : format(new Date(utcDate), 'HH:mm dd.MM.yyyy')
@@ -54,4 +54,4 @@ const TeamCalendarItem = ({ teamCalendarItem }) => {
         </div >
     )
 }
-export default TeamCalendarItem
+export default CalendarItem

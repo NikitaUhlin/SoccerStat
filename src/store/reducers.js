@@ -4,7 +4,10 @@ const initialState = {
     teams: [],
     teamsCount: 0,
     matches: [],
-    loading: true
+    competition: {},
+    matchesCount: 0,
+    loading: true,
+    matchesAccessError: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -37,12 +40,41 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 matches: action.payload.matches,
+                matchesCount: action.payload.count,
+                matchesAccessError: false,
                 loading: false
             };
         case 'TEAM_MATCHES_REQUESTED':
             return {
                 ...state,
+                matchesAccessError: false,
                 loading: true
+            };
+        case 'COMPETITION_MATCHES_LOADED':
+            return {
+                ...state,
+                matches: action.payload.matches,
+                competition: action.payload.competition,
+                matchesAccessError: false,
+                loading: false
+            };
+        case 'COMPETITION_MATCHES_REQUESTED':
+            return {
+                ...state,
+                matchesAccessError: false,
+                loading: true
+            };
+        case 'COMPETITION_MATCHES_ERROR_403':
+            return {
+                ...state,
+                matchesAccessError: true,
+                loading: false
+            };
+        case 'MATCHES_CLEAR':
+            return {
+                ...state,
+                matches: [],
+                competition: {}
             };
         default:
             return state;

@@ -10,7 +10,7 @@ const TeamItem = ({ teamItem }) => {
             className="team-link"
             to={`/teams/${id}`}>
             <div className="team-card">
-                <div className="team_name">{name} и {id}</div>
+                <div className="team_name">{name}</div>
                 <div className="team-content">
                     <img className="crest-icon" src={crestUrl || defaultCrest} alt='n/a' />
                     <div>
