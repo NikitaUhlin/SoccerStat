@@ -10,6 +10,7 @@ import Spinner from '../spinner/spinner';
 const TeamsList = ({ teamRequested, teamLoaded, teams, loading }) => {
     const [filteredTeams, setFilteredTeams] = useState(teams);
     const [emptySearch, setEmptySearch] = useState(false);
+    const [preloadedSearch, setPreloadedSearch] = useState('');
     useEffect(() => {
         teamRequested();
         API.getTeams()
@@ -17,13 +18,18 @@ const TeamsList = ({ teamRequested, teamLoaded, teams, loading }) => {
     }, [])
     useEffect(() => {
         setFilteredTeams(teams);
+        if (preloadedSearch.length) {
+            onSearch(preloadedSearch);
+            setPreloadedSearch('');
+        }
     }, [teams])
     const onSearch = (searchTerm) => {
         if (teams.length === 0) {
+            setPreloadedSearch(searchTerm)
             return
         }
         if (searchTerm.length) {
-            const searchRes = teams.filter((item) => item.name.toUpperCase().includes(searchTerm))
+            const searchRes = teams.filter((item) => item.name.toLowerCase().includes(searchTerm))
             if (searchRes.length) {
                 setFilteredTeams(searchRes);
                 setEmptySearch(false);
@@ -40,8 +46,10 @@ const TeamsList = ({ teamRequested, teamLoaded, teams, loading }) => {
     return (
 
         <div className="content_teams-list">
-            <SearchPanel label="команд"
+            <SearchPanel
+                label="команд"
                 onSearch={onSearch}
+                initialValue={window.location.search.replace('?q=', '')}
             />
             {loading ? <Spinner /> :
                 <div className="teams-list">

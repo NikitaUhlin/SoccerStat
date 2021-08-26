@@ -12,6 +12,7 @@ import Spinner from '../spinner/spinner';
 const CompetitionsList = ({ competitionRequested, competitionLoaded, competitions, loading }) => {
     const [filteredCompetitions, setFilteredCompetitions] = useState(competitions);
     const [emptySearch, setEmptySearch] = useState(false);
+    const [preloadedSearch, setPreloadedSearch] = useState('');
     useEffect(() => {
         competitionRequested();
         API.getCompetitions()
@@ -19,13 +20,18 @@ const CompetitionsList = ({ competitionRequested, competitionLoaded, competition
     }, [])
     useEffect(() => {
         setFilteredCompetitions(competitions);
+        if (preloadedSearch.length) {
+            onSearch(preloadedSearch);
+            setPreloadedSearch('')
+        }
     }, [competitions])
     const onSearch = (searchTerm) => {
         if (competitions.length === 0) {
+            setPreloadedSearch(searchTerm)
             return
         }
         if (searchTerm.length) {
-            const searchRes = competitions.filter((item) => item.name.toUpperCase().includes(searchTerm))
+            const searchRes = competitions.filter((item) => item.name.toLowerCase().includes(searchTerm))
             if (searchRes.length) {
                 setFilteredCompetitions(searchRes);
                 setEmptySearch(false);
@@ -44,6 +50,7 @@ const CompetitionsList = ({ competitionRequested, competitionLoaded, competition
             <SearchPanel
                 label="лиг"
                 onSearch={onSearch}
+                initialValue={window.location.search.replace('?q=', '')}
             />
             {loading ? <Spinner /> :
                 <table className="competitions-list">
