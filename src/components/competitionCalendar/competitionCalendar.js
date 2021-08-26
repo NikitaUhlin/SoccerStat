@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
@@ -10,9 +10,10 @@ import {
 import API from '../../services/apiService';
 import CalendarItem from '../calendarItem/calendarItem';
 import Spinner from '../spinner/spinner';
-import refereeRed from '../../assets/icons/referee-red.svg'
+import refereeRed from '../../assets/icons/referee-red.svg';
 import './competitionCalendar.css'
-
+import { DatePicker } from 'antd';
+const { RangePicker } = DatePicker;
 
 const CompetitionCalendar = ({
     competitionMatchesLoaded,
@@ -24,6 +25,7 @@ const CompetitionCalendar = ({
     competition,
     loading
 }) => {
+    const [filteredMatches, setFilteredMatches] = useState([]);
     const { id } = useParams();
     useEffect(() => {
         competitionMatchesRequested();
@@ -40,6 +42,29 @@ const CompetitionCalendar = ({
             clearMatches()
         }
     }, [])
+    useEffect(() => {
+        setFilteredMatches(matches)
+    }, [matches])
+    const onCalendarFilter = (range) => {
+        if (!range) {
+            setFilteredMatches(matches)
+            return
+        }
+        if (range[0] && range[1]) {
+            const startDate = range[0];
+            const endDate = range[1];
+            setFilteredMatches(matches.filter((item) => {
+                const matchDate = new Date(item.utcDate).getTime()
+                console.log(startDate);
+                console.log(matchDate);
+                console.log(endDate);
+                if (matchDate <= endDate && matchDate >= startDate) {
+                    return true
+                }
+                return false
+            }))
+        }
+    }
     const content =
         matchesAccessError ?
             <div>
@@ -50,7 +75,7 @@ const CompetitionCalendar = ({
                 <Link to="/competitions" className="calendarList-errorBack">Назад к списку лиг</Link>
             </div>
             :
-            matches.map(calendarItem => (
+            filteredMatches.map(calendarItem => (
                 <CalendarItem
                     calendarItem={calendarItem}
                     competition={competition}
@@ -59,7 +84,18 @@ const CompetitionCalendar = ({
             ))
     return (
         <div>
-            {competition.name && <div className="calendarList-title" > Календарь матчей лиги {competition.name}</div>}
+            {competition.name &&
+                <>
+                    <div className="calendarList-title">
+                        Календарь матчей лиги {competition.name}
+                    </div>
+                    <RangePicker
+                        onCalendarChange={onCalendarFilter}
+                        format="DD.MM.YYYY"
+                        placeholder={["Фильтр с", "Фильтр по"]}
+                    />
+                </>
+            }
             <div className="calendarList">
                 {loading ? <Spinner /> : content}
             </div>

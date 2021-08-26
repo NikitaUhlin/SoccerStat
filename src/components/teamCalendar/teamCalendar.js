@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { teamMatchesLoaded, teamMatchesRequested, clearMatches } from '../../store/actions';
@@ -7,6 +7,8 @@ import CalendarItem from '../calendarItem/calendarItem';
 import Spinner from '../spinner/spinner';
 import refereeYellow from '../../assets/icons/referee-yellow.svg'
 import './teamCalendar.css'
+import { DatePicker } from 'antd';
+const { RangePicker } = DatePicker;
 
 
 const TeamCalendar = ({
@@ -16,6 +18,7 @@ const TeamCalendar = ({
     loading,
     matches
 }) => {
+    const [filteredMatches, setFilteredMatches] = useState([]);
     const { id } = useParams();
     useEffect(() => {
         teamMatchesRequested();
@@ -32,8 +35,31 @@ const TeamCalendar = ({
     else if (matches.length) {
         teamName = matches[0].homeTeam.name
     }
+    useEffect(() => {
+        setFilteredMatches(matches)
+    }, [matches])
+    const onCalendarFilter = (range) => {
+        if (!range) {
+            setFilteredMatches(matches)
+            return
+        }
+        if (range[0] && range[1]) {
+            const startDate = range[0];
+            const endDate = range[1];
+            setFilteredMatches(matches.filter((item) => {
+                const matchDate = new Date(item.utcDate).getTime()
+                console.log(startDate);
+                console.log(matchDate);
+                console.log(endDate);
+                if (matchDate <= endDate && matchDate >= startDate) {
+                    return true
+                }
+                return false
+            }))
+        }
+    }
     const content = matches.length ?
-        matches.map(calendarItem => (
+        filteredMatches.map(calendarItem => (
             <CalendarItem
                 calendarItem={calendarItem}
                 key={calendarItem.id}
@@ -50,9 +76,16 @@ const TeamCalendar = ({
     return (
         <div>
             {teamName &&
-                <div className="calendarList-title">
-                    Календарь матчей команды {teamName}
-                </div>
+                <>
+                    <div className="calendarList-title">
+                        Календарь матчей команды {teamName}
+                    </div>
+                    <RangePicker
+                        onCalendarChange={onCalendarFilter}
+                        format="DD.MM.YYYY"
+                        placeholder={["Фильтр с", "Фильтр по"]}
+                    />
+                </>
             }
             <div className="calendarList">
                 {loading ? <Spinner /> : content}
