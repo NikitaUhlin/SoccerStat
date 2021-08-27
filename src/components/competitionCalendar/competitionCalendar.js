@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
+import moment from 'moment';
 import {
     clearMatches,
     competitionMatchesLoaded,
@@ -11,9 +12,10 @@ import API from '../../services/apiService';
 import CalendarItem from '../calendarItem/calendarItem';
 import Spinner from '../spinner/spinner';
 import refereeRed from '../../assets/icons/referee-red.svg';
+import refereeYellow from '../../assets/icons/referee-yellow.svg';
+import FilterMatches from '../filterMatches/filterMatches';
 import './competitionCalendar.css'
-import { DatePicker } from 'antd';
-const { RangePicker } = DatePicker;
+import getQueryFilter from '../../utilities/getQueryFilter';
 
 const CompetitionCalendar = ({
     competitionMatchesLoaded,
@@ -25,7 +27,10 @@ const CompetitionCalendar = ({
     competition,
     loading
 }) => {
+    const location = useLocation();
     const [filteredMatches, setFilteredMatches] = useState([]);
+    const [preloadedSearch, setPreloadedSearch] = useState([]);
+    const [isMatchesLoaded, setIsMatchesLoaded] = useState(false);
     const { id } = useParams();
     useEffect(() => {
         competitionMatchesRequested();
@@ -38,12 +43,22 @@ const CompetitionCalendar = ({
                     competitionMatchesError403()
                 }
             })
+        const queryFilter = getQueryFilter(location)
+        if (queryFilter) {
+            setPreloadedSearch(queryFilter)
+        }
         return () => {
             clearMatches()
         }
     }, [])
     useEffect(() => {
-        setFilteredMatches(matches)
+        if (!loading) {
+            setFilteredMatches(matches)
+            setIsMatchesLoaded(true)
+        }
+        if (preloadedSearch.length) {
+            onCalendarFilter(preloadedSearch)
+        }
     }, [matches])
     const onCalendarFilter = (range) => {
         if (!range) {
@@ -55,9 +70,6 @@ const CompetitionCalendar = ({
             const endDate = range[1];
             setFilteredMatches(matches.filter((item) => {
                 const matchDate = new Date(item.utcDate).getTime()
-                console.log(startDate);
-                console.log(matchDate);
-                console.log(endDate);
                 if (matchDate <= endDate && matchDate >= startDate) {
                     return true
                 }
@@ -65,23 +77,35 @@ const CompetitionCalendar = ({
             }))
         }
     }
-    const content =
-        matchesAccessError ?
-            <div>
-                <img className="calendarList-errorImg" src={refereeRed} alt="" />
-                <div className="calendarList-error">
-                    У вас нет доступа к информации о мачах этой лиги
-                </div>
-                <Link to="/competitions" className="calendarList-errorBack">Назад к списку лиг</Link>
+    let content;
+    if (matchesAccessError) {
+        content = <div>
+            <img className="calendarList-errorImg" src={refereeRed} alt="" />
+            <div className="calendarList-error">
+                У вас нет доступа к информации о мачах этой лиги
             </div>
-            :
-            filteredMatches.map(calendarItem => (
-                <CalendarItem
-                    calendarItem={calendarItem}
-                    competition={competition}
-                    key={calendarItem.id}
-                />
-            ))
+            <Link to="/competitions" className="calendarList-errorBack">Назад к списку лиг</Link>
+        </div>
+    }
+    else if (filteredMatches.length) {
+        content = filteredMatches.map(calendarItem => (
+            <CalendarItem
+                calendarItem={calendarItem}
+                competition={competition}
+                key={calendarItem.id}
+            />
+        ))
+    }
+    else {
+        content =
+            <div>
+                <img className="calendarList-errorImg" src={refereeYellow} alt="" />
+                <div className="calendarList-error">
+                    Не найдено ни одного матча, попробуйте изменить условия поиска
+                </div>
+            </div>
+    }
+
     return (
         <div>
             {competition.name &&
@@ -89,15 +113,14 @@ const CompetitionCalendar = ({
                     <div className="calendarList-title">
                         Календарь матчей лиги {competition.name}
                     </div>
-                    <RangePicker
-                        onCalendarChange={onCalendarFilter}
-                        format="DD.MM.YYYY"
-                        placeholder={["Фильтр с", "Фильтр по"]}
+                    <FilterMatches
+                        onCalendarFilter={onCalendarFilter}
+                        initialFilterValue={preloadedSearch}
                     />
                 </>
             }
             <div className="calendarList">
-                {loading ? <Spinner /> : content}
+                {loading || !isMatchesLoaded ? <Spinner /> : content}
             </div>
         </div>
 
