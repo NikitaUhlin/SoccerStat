@@ -6,18 +6,20 @@ import CompetitionItem from '../competitionItems/competitionItem'
 import './competitionsList.css'
 import SearchPanel from '../searchPanel/searchPanel';
 import Spinner from '../spinner/spinner';
+import { useLocation } from 'react-router-dom';
 
 
 
 const CompetitionsList = ({ competitionRequested, competitionLoaded, competitions, loading }) => {
     const [filteredCompetitions, setFilteredCompetitions] = useState(competitions);
     const [emptySearch, setEmptySearch] = useState(false);
+    const location = useLocation();
     const [preloadedSearch, setPreloadedSearch] = useState('');
     useEffect(() => {
         competitionRequested();
         API.getCompetitions()
             .then(res => competitionLoaded(res.data));
-        const searchItem = window.location.search.replace('?q=', '')
+        const searchItem = location.search.replace('?q=', '')
         if (searchItem.length) {
             setPreloadedSearch(searchItem);
         }
@@ -54,7 +56,7 @@ const CompetitionsList = ({ competitionRequested, competitionLoaded, competition
             <SearchPanel
                 label="лиг"
                 onSearch={onSearch}
-                initialValue={window.location.search.replace('?q=', '')}
+                initialValue={location.search.replace('?q=', '')}
             />
             {loading ? <Spinner /> :
                 <table className="competitions-list">
