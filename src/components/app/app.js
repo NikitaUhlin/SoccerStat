@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import TeamCalendar from '../teamCalendar/teamCalendar';
 import CompetitionCalendar from '../competitionCalendar/competitionCalendar';
+import MainPage from '../mainPage/mainPage';
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
         <Header />
         <div className="app_content">
           <Switch>
+            <Route path='/'
+              exact>
+              <MainPage />
+            </Route>
             <Route path='/competitions'
               exact>
               <CompetitionsList />

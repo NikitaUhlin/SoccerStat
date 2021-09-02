@@ -21,6 +21,12 @@ const FilterMatches = ({ onCalendarFilter, initialFilterValue }) => {
         <>
             <div className="range-label">Сортировка по дате:</div>
             <RangePicker
+                className="filterMatches"
+                dropdownClassName="dropdownFilterMatches"
+                style={{
+                    borderColor: "#1b5e20",
+                    boxShadow: "0 0 0 2px #1b5e2040"
+                }}
                 onCalendarChange={onChange}
                 format="DD.MM.YYYY"
                 placeholder={["Фильтр с", "Фильтр по"]}

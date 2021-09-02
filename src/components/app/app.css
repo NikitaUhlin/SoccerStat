@@ -3,3 +3,6 @@
     max-width: 1200px;
     padding: 0 15px 0 15px;
 }
+a:hover {
+  color: #e8f5e9;
+}

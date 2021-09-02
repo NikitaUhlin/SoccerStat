@@ -24,6 +24,9 @@
     text-decoration: none;
     color: white;
 }
+.header-title:hover{
+    text-decoration: underline;
+}
 .header-links {
     display: flex;
     justify-content: flex-end;

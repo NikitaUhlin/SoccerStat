@@ -82,7 +82,7 @@ const CompetitionCalendar = ({
         content = <div>
             <img className="calendarList-errorImg" src={refereeRed} alt="" />
             <div className="calendarList-error">
-                У вас нет доступа к информации о мачах этой лиги
+                У вас нет доступа к информации о матчах этой лиги
             </div>
             <Link to="/competitions" className="calendarList-errorBack">Назад к списку лиг</Link>
         </div>

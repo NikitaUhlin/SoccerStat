@@ -1,5 +1,9 @@
 .competitions-list {
+    
     margin: 20px auto;
-    border-spacing: 0 10px;
     width: 100%;
+}
+table{
+    border-collapse: unset;
+    border-spacing: 0 10px;
 }

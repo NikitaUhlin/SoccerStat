@@ -10,6 +10,10 @@
     padding: 12px;
     font-size: 18px;
     outline: none;
-
-    
+}
+@media (max-width: 600px){
+    .search{
+        padding: 6px;
+        font-size: 12px;
+    }
 }

@@ -4,12 +4,10 @@
     padding-right: 10px;
 }
 .content {
-    color: rgb(0, 0, 0);
     
+    color: rgb(0, 0, 0);
     font-size: 16px;
     font-weight: bold;
-    align-items: center;
-    justify-content: space-between;
     background-color: #e8f5e9;
     transition: 0.3s linear;
 }
@@ -26,7 +24,8 @@
     align-items: center;
 }
 .content-td {
-    padding: 20px;
+    padding: 20px 90px;
+    
 }
 .content-td:first-child {
     border-radius: 6px 0 0 6px;

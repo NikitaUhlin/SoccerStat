@@ -17,6 +17,10 @@ const CompetitionsList = ({ competitionRequested, competitionLoaded, competition
         competitionRequested();
         API.getCompetitions()
             .then(res => competitionLoaded(res.data));
+        const searchItem = window.location.search.replace('?q=', '')
+        if (searchItem.length) {
+            setPreloadedSearch(searchItem);
+        }
     }, [])
     useEffect(() => {
         setFilteredCompetitions(competitions);
@@ -54,11 +58,13 @@ const CompetitionsList = ({ competitionRequested, competitionLoaded, competition
             />
             {loading ? <Spinner /> :
                 <table className="competitions-list">
-                    {emptySearch ? <tr><td>Ничего не найдено...</td></tr> :
-                        filteredCompetitions.map(competitionItem => {
-                            return <CompetitionItem key={competitionItem.id}
-                                competitionItem={competitionItem} />
-                        })}
+                    <tbody>
+                        {emptySearch ? <tr><td>Ничего не найдено...</td></tr> :
+                            filteredCompetitions.map(competitionItem => {
+                                return <CompetitionItem key={competitionItem.id}
+                                    competitionItem={competitionItem} />
+                            })}
+                    </tbody>
                 </table>
             }
         </div>
