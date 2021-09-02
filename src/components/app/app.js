@@ -4,7 +4,7 @@ import './app.css';
 import CompetitionsList from '../competitionsList/competitionsList';
 import TeamsList from '../teamsList/teamsList';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
