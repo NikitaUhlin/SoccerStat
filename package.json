@@ -1,6 +1,6 @@
 {
   "name": "stat-europe-football",
-  "homepage": "https://nikitauhlin.github.io/",
+  "homepage": "https://nikitauhlin.github.io/SoccerStat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
