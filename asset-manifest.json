@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/SoccerStat/static/css/main.a2726f2b.chunk.css",
-    "main.js": "/SoccerStat/static/js/main.3a7f103f.chunk.js",
-    "main.js.map": "/SoccerStat/static/js/main.3a7f103f.chunk.js.map",
+    "main.css": "/SoccerStat/static/css/main.7c68eddc.chunk.css",
+    "main.js": "/SoccerStat/static/js/main.25db3e62.chunk.js",
+    "main.js.map": "/SoccerStat/static/js/main.25db3e62.chunk.js.map",
     "runtime-main.js": "/SoccerStat/static/js/runtime-main.bcf00f3c.js",
     "runtime-main.js.map": "/SoccerStat/static/js/runtime-main.bcf00f3c.js.map",
     "static/css/2.786ae0dd.chunk.css": "/SoccerStat/static/css/2.786ae0dd.chunk.css",
-    "static/js/2.e79d899d.chunk.js": "/SoccerStat/static/js/2.e79d899d.chunk.js",
-    "static/js/2.e79d899d.chunk.js.map": "/SoccerStat/static/js/2.e79d899d.chunk.js.map",
+    "static/js/2.5e6004a7.chunk.js": "/SoccerStat/static/js/2.5e6004a7.chunk.js",
+    "static/js/2.5e6004a7.chunk.js.map": "/SoccerStat/static/js/2.5e6004a7.chunk.js.map",
     "index.html": "/SoccerStat/index.html",
     "static/css/2.786ae0dd.chunk.css.map": "/SoccerStat/static/css/2.786ae0dd.chunk.css.map",
-    "static/css/main.a2726f2b.chunk.css.map": "/SoccerStat/static/css/main.a2726f2b.chunk.css.map",
-    "static/js/2.e79d899d.chunk.js.LICENSE.txt": "/SoccerStat/static/js/2.e79d899d.chunk.js.LICENSE.txt",
+    "static/css/main.7c68eddc.chunk.css.map": "/SoccerStat/static/css/main.7c68eddc.chunk.css.map",
+    "static/js/2.5e6004a7.chunk.js.LICENSE.txt": "/SoccerStat/static/js/2.5e6004a7.chunk.js.LICENSE.txt",
     "static/media/arrow-back.9d34d7cc.svg": "/SoccerStat/static/media/arrow-back.9d34d7cc.svg",
     "static/media/header.css": "/SoccerStat/static/media/header-bg.00cff39a.jpg",
     "static/media/logo.6848e264.png": "/SoccerStat/static/media/logo.6848e264.png",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.bcf00f3c.js",
     "static/css/2.786ae0dd.chunk.css",
-    "static/js/2.e79d899d.chunk.js",
-    "static/css/main.a2726f2b.chunk.css",
-    "static/js/main.3a7f103f.chunk.js"
+    "static/js/2.5e6004a7.chunk.js",
+    "static/css/main.7c68eddc.chunk.css",
+    "static/js/main.25db3e62.chunk.js"
   ]
 }
