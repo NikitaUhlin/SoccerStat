@@ -1,7 +1,7 @@
-import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import { DatePicker } from 'antd';
-import './filterMatches.css'
+import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import { DatePicker } from "antd";
+import "./filterMatches.css";
 
 const { RangePicker } = DatePicker;
 
@@ -12,11 +12,14 @@ const FilterMatches = ({ onCalendarFilter, initialFilterValue }) => {
     const onChange = (range, stringsRange) => {
         onCalendarFilter(range);
         if (range) {
-            history.replace(`${location.pathname}?filter=range${stringsRange[0]}to${stringsRange[1]}`, { from: "FilterMatches" })
+            history.replace(
+                `${location.pathname}?filter=range${stringsRange[0]}to${stringsRange[1]}`,
+                { from: "FilterMatches" }
+            );
+        } else {
+            history.replace(`${location.pathname}`, { from: "FilterMatches" });
         }
-        else { history.replace(`${location.pathname}`, { from: "FilterMatches" }) }
-
-    }
+    };
     return (
         <>
             <div className="range-label">Сортировка по дате:</div>
@@ -25,7 +28,7 @@ const FilterMatches = ({ onCalendarFilter, initialFilterValue }) => {
                 dropdownClassName="dropdownFilterMatches"
                 style={{
                     borderColor: "#1b5e20",
-                    boxShadow: "0 0 0 2px #1b5e2040"
+                    boxShadow: "0 0 0 2px #1b5e2040",
                 }}
                 onCalendarChange={onChange}
                 format="DD.MM.YYYY"
@@ -33,8 +36,7 @@ const FilterMatches = ({ onCalendarFilter, initialFilterValue }) => {
                 defaultValue={initialFilterValue}
             />
         </>
-    )
-
-}
+    );
+};
 
 export default FilterMatches;

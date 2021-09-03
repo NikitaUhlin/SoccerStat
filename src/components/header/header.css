@@ -1,64 +1,62 @@
 .header__content {
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    margin: 0 auto;
-    padding: 20px;
-    color: rgb(255, 255, 255);
-    font-size: 26px;
-    font-weight: 500;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1160px;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+  color: rgb(255, 255, 255);
+  font-size: 26px;
+  font-weight: 500;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1160px;
 }
 .header {
-    background:url(../../assets/img/header-bg.jpg);
-    background-size: cover;
-    background-position: 0 70%;
-
+  background: url(../../assets/img/header-bg.jpg);
+  background-size: cover;
+  background-position: 0 70%;
 }
 .header-title {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
 }
-.header-title:hover{
-    text-decoration: underline;
+.header-title:hover {
+  text-decoration: underline;
 }
 .header-links {
-    display: flex;
-    justify-content: flex-end;
-    
+  display: flex;
+  justify-content: flex-end;
 }
 .header-link {
-    margin-left: 20px;
-    display: flex;
-    text-decoration: none;
-    color: white;
+  margin-left: 20px;
+  display: flex;
+  text-decoration: none;
+  color: white;
 }
 .header-link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 .header-logo {
-    width: 50px;
-    margin-right: 5px;
+  width: 50px;
+  margin-right: 5px;
 }
-@media (max-width: 600px){
-        .header__content {
-           font-size: 13px; 
-           padding: 20px 15px;
-        }
-        .header-logo {
-            width: 20px;
-        }
-        .header-link {
-            margin-left: 10px;
-        }
+@media (max-width: 600px) {
+  .header__content {
+    font-size: 13px;
+    padding: 20px 15px;
+  }
+  .header-logo {
+    width: 20px;
+  }
+  .header-link {
+    margin-left: 10px;
+  }
 }
-@media (max-width: 320px){
-        .header-title {
-            align-items: flex-start;
-        }
+@media (max-width: 320px) {
+  .header-title {
+    align-items: flex-start;
+  }
 }

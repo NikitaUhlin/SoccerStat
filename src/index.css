@@ -1,10 +1,7 @@
-body {
-  margin: 0;
-  overflow-style: overlay;
-  background-color: #ffffff;
-}
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-select:focus, textarea:focus, input:focus {
-        font-size: 16px;
-    }
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px;
+  }
 }

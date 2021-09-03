@@ -1,18 +1,17 @@
 .range-label {
-    font-size: 16px;
-    margin-bottom: 3px;
-    font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 3px;
+  font-weight: 500;
 }
-.filterMatches .ant-picker-active-bar{
-    background: #1b5e20;
+.filterMatches .ant-picker-active-bar {
+  background: #1b5e20;
 }
-@media (max-width: 600px){
-    .filterMatches {
-        width: 100%;
-    }
-    .dropdownFilterMatches .ant-picker-panels{
-        display: block;
-        text-align: center;
-    }
+@media (max-width: 600px) {
+  .filterMatches {
+    width: 100%;
+  }
+  .dropdownFilterMatches .ant-picker-panels {
+    display: block;
+    text-align: center;
+  }
 }
-

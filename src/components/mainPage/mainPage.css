@@ -1,69 +1,69 @@
 .mainPage-text span {
-    font-weight: 700;
+  font-weight: 700;
 }
-.mainPage-text{
-    text-align: justify;
-    font-size: 16px;
-    width: 600px;
-    margin: 0 auto;
+.mainPage-text {
+  text-align: justify;
+  font-size: 16px;
+  width: 600px;
+  margin: 0 auto;
 }
 
 .mainPage-links {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-.mainPage-link{
-    background-color: #e8f5e9;
-    color: #1b5e20;
-    font-size: 20px;
-    padding: 10px 30px;
-    margin: 20px;
-    transition: 0.3s;
-    font-weight: 500;
-    border-radius: 6px;
+.mainPage-link {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  font-size: 20px;
+  padding: 10px 30px;
+  margin: 20px;
+  transition: 0.3s;
+  font-weight: 500;
+  border-radius: 6px;
 }
 .mainPage-link:hover {
-   background-color: #c8e6c9;
-   color: #1b5e20;
+  background-color: #c8e6c9;
+  color: #1b5e20;
 }
 h1 {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 36px;
-    font-weight: bold;
-    color: #1b5e20;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #1b5e20;
 }
-.mainPage-content{
-    display: flex;
+.mainPage-content {
+  display: flex;
 }
-.mainPage-cup{
-    width: 600px;
-    display: block;
-    margin: 0 auto;
+.mainPage-cup {
+  width: 600px;
+  display: block;
+  margin: 0 auto;
 }
-.mainPage-content p{
-    margin-right: 20px;
+.mainPage-content p {
+  margin-right: 20px;
 }
-@media (max-width: 600px){
-    .mainPage-cup{
+@media (max-width: 600px) {
+  .mainPage-cup {
     width: 100%;
-    }
-    h1{
-        font-size: 20px;
-        margin-top: 10px;
-    }
-    .mainPage-link{
-        display: block;
-        font-size: 14px;
-        /* padding: 5px 10px; */
-        margin: 10px 0;
-        text-align: center;
-    }
-    .mainPage-text{
+  }
+  h1 {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  .mainPage-link {
+    display: block;
+    font-size: 14px;
+    /* padding: 5px 10px; */
+    margin: 10px 0;
+    text-align: center;
+  }
+  .mainPage-text {
     font-size: 10px;
     width: 100%;
-    }
-    .mainPage-links {
-        display: block;
-    }
+  }
+  .mainPage-links {
+    display: block;
+  }
 }
