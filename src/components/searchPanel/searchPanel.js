@@ -20,7 +20,10 @@ const SearchPanel = ({ label, onSearch, initialValue }) => {
         }
         else { history.replace(`${location.pathname}`, { from: "SearchPanel" }) }
     }, [debouncedSearchTerm]);
-
+    useEffect(() => {
+        console.log(initialValue)
+        setValue(initialValue)
+    }, [initialValue])
     return (
         <input
             className="search"

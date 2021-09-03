@@ -25,6 +25,11 @@ const CompetitionsList = ({ competitionRequested, competitionLoaded, competition
         }
     }, [])
     useEffect(() => {
+        if (location.search.length === 0) {
+            onSearch('')
+        }
+    }, [location.search])
+    useEffect(() => {
         setFilteredCompetitions(competitions);
         if (preloadedSearch.length) {
             onSearch(preloadedSearch);

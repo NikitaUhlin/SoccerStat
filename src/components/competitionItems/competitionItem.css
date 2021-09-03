@@ -33,10 +33,14 @@
 .content-td:last-child {
     border-radius: 0 6px 6px 0;
 }
-
+@media (max-width: 895px){
+    .content-td {
+             padding: 15px;
+    }
+}
 @media (max-width: 600px){
-        .content {
-           font-size: 10px; 
+        .content-td {
+             padding: 10px;
         }
         .area-icon {
             width: 15px;
@@ -44,8 +48,8 @@
         }
         .content-td {
              padding: 10px;
+        }
 }
-    }
 
 
 

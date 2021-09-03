@@ -6,22 +6,35 @@ import TeamItem from '../teamsItem/teamsItem'
 import './teamsList.css'
 import SearchPanel from '../searchPanel/searchPanel';
 import Spinner from '../spinner/spinner';
+import { useLocation } from 'react-router-dom';
 
 const TeamsList = ({ teamRequested, teamLoaded, teams, loading }) => {
     const [filteredTeams, setFilteredTeams] = useState(teams);
     const [emptySearch, setEmptySearch] = useState(false);
     const [preloadedSearch, setPreloadedSearch] = useState('');
+    const location = useLocation();
+
     useEffect(() => {
         teamRequested();
         API.getTeams()
             .then(res => teamLoaded(res.data));
+        const searchItem = location.search.replace('?q=', '')
+        if (searchItem.length) {
+            setPreloadedSearch(searchItem);
+        }
     }, [])
+    useEffect(() => {
+        if (location.search.length === 0) {
+            onSearch('')
+        }
+    }, [location.search])
     useEffect(() => {
         setFilteredTeams(teams);
         if (preloadedSearch.length) {
             onSearch(preloadedSearch);
             setPreloadedSearch('');
         }
+
     }, [teams])
     const onSearch = (searchTerm) => {
         if (teams.length === 0) {
@@ -49,11 +62,11 @@ const TeamsList = ({ teamRequested, teamLoaded, teams, loading }) => {
             <SearchPanel
                 label="команд"
                 onSearch={onSearch}
-                initialValue={window.location.search.replace('?q=', '')}
+                initialValue={location.search.replace('?q=', '')}
             />
             {loading ? <Spinner /> :
                 <div className="teams-list">
-                    {emptySearch ? <tr><td>Ничего не найдено...</td></tr> :
+                    {emptySearch ? <div>Ничего не найдено...</div> :
                         filteredTeams.map(teamItem => (<TeamItem key={teamItem.id} teamItem={teamItem} />
                         ))}
                 </div>
