@@ -1,7 +1,7 @@
 import React from "react";
 import "./calendarItem.css";
 import arrowBack from "../../assets/icons/arrow-back.svg";
-import { format } from "date-fns";
+import moment from "moment";
 
 const CalendarItem = ({ calendarItem, competition }) => {
     const competitionName = competition ? "" : calendarItem.competition.name;
@@ -17,8 +17,8 @@ const CalendarItem = ({ calendarItem, competition }) => {
     } = calendarItem;
     const date =
         status === "FINISHED"
-            ? format(new Date(utcDate), "dd.MM.yyyy")
-            : format(new Date(utcDate), "HH:mm dd.MM.yyyy");
+            ? moment(utcDate).format("DD.MM.YYYY")
+            : moment(utcDate).format("HH:mm DD.MM.YYYY");
     const translatedStatus = status === "FINISHED" ? "ОКОНЧЕН" : "";
     const renderArrow = <img className="arrowBack" src={arrowBack} alt="<" />;
     const homeIcon = winner === "HOME_TEAM" ? renderArrow : null;

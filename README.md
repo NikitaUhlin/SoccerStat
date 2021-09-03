@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Приложение SoccerStat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Приложение для просмотра спортивной статистики ведущих
+европейских турниров по футболу.
 
-## Available Scripts
+Demo: https://nikitauhlin.github.io/SoccerStat
 
-In the project directory, you can run:
+## Использованая технология:
 
-### `npm start`
+Библиотека React
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Использованые библиотеки:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Redux https://redux.js.org/
+- React Router https://reactrouter.com/
+- Axios https://axios-http.com/
+- Moment https://momentjs.com/
+- Ant Design https://ant.design/
 
-### `npm test`
+## Cтраницы:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Главная страница
+- Список лиг
+- Список команд
+- Календарь лиги
+  - Cписок матчей лиги
+- Календарь одной команды
+  - Cписок матчей команды
 
-### `npm run build`
+## Возможности:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- На страницах календаря можно указать фильтр по дате (с, по)
+- На страницах списка можно найти сущность по текстовому поиску.
+- После обновления страницы данные (дата фильтра, команда, поисковой запрос) сохраняются.
+- Приложение адаптировано для мобильных устройств и планшетов
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+В качестве публичного API для получения данных используется https://www.football-data.org/.
 
-### `npm run eject`
+Это API содержит ограничения на бесплатном
+тарифе, пользователю корректно сообщается о том, что данные не получены.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Как пользоваться приложением
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Запуск проекта в режиме разработчика. Перейдите на http://localhost:3000 для просмотра приложения в браузере.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`npm run build`
 
-## Learn More
+Запуск сборки для продакшена
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`npm deploy`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Команда для деплоя на gh-pages
