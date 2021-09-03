@@ -24,8 +24,7 @@ const SearchPanel = ({ label, onSearch, initialValue }) => {
         }
     }, [debouncedSearchTerm]);
     useEffect(() => {
-        console.log(initialValue);
-        setValue(initialValue);
+        setValue(decodeURI(initialValue));
     }, [initialValue]);
     return (
         <input
